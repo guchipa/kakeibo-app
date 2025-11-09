@@ -1,0 +1,32 @@
+{
+  "name": "Kakeibo Backend (Dev Container)",
+
+  // 1. 使用する docker-compose ファイルを指定します
+  //    (この .devcontainer フォルダから見た相対パス)
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+
+  // 2. docker-compose.yml 内の、どのサービスに接続(アタッチ)するかを指定します
+  "service": "backend",
+
+  // 3. VS Code で開く、コンテナ内の作業フォルダを指定します
+  //    (backend/Dockerfile の WORKDIR と一致させます)
+  "workspaceFolder": "/app",
+
+  // 4. (任意ですが強く推奨)
+  //    コンテナ内に自動でインストールしたい VS Code 拡張機能
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",         // Python
+        "ms-python.vscode-pylance", // 高機能なPython言語サポート
+        "charliermarsh.ruff",       // uv を使うなら linter/formatter も Ruff がおすすめ
+        "ms-azuretools.vscode-docker" // Docker拡張機能（他コンテナの確認に便利）
+      ]
+    }
+  },
+
+  // 5. アタッチ後も他のサービスを起動したままにする
+  "shutdownAction": "stopCompose"
+}
